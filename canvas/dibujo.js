@@ -3,8 +3,9 @@ var boton = document.getElementById("botoncito");
 boton.addEventListener("click", dibujoPorClick);
 
 var d =document.getElementById("dibujito");
+var ancho = d.width;
 var lienzo = d.getContext("2d");
-
+alert(ancho);
 
 function dibujarLinea (color, xinicial, yinicial, xfinal, yfinal)
 {
@@ -15,24 +16,24 @@ function dibujarLinea (color, xinicial, yinicial, xfinal, yfinal)
     lienzo.stroke();
     lienzo.closePath;
 }
+
 function dibujoPorClick()
 {
-    var xxx = parseInt(texto.value);
-    alert("No me toques ahi " + texto.value);
+    var lineas = parseInt(texto.value);
+    var l = 0;
+    var yi, xf;
+    var colorcito = "#FAA";
+    var espacio = ancho / lineas;
 
-    var lineas = 30;
-var l = 0;
-var yi, xf;
+    for( l = 0; l < lineas; l++)
+    {
+        yi = espacio * l;
+        xf = espacio * ( l + 1 );
+        dibujarLinea(colorcito, 0, yi, xf, 300);   
+        console.log("Linea " + l);
+        l = l + 1;
+    }
 
-for( l = 0; 1 < lineas; l++)
-{
-    yi = 10 * l;
-    xf = 10 * ( l + 1 );
-    dibujarLinea("green", 0, yi, xf, 300);   
-    console.log("Linea " + l);
-    l = l + 1;
-}
-
-dibujarLinea(colorcito, 1,1,1,299);  
-dibujarLinea(colorcito, 1,299,299,299);  
+    dibujarLinea(colorcito, 1,1,1,299);  
+    dibujarLinea(colorcito, 1,299,299,299);  
 }
