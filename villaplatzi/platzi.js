@@ -65,14 +65,36 @@ function dibujar()
         papel.drawImage(fondo.imagen, 0, 0);
     }
     
-    var cantidad = aleatorio(10 , 20)
-    for(var v=0; v<cantidad; v++)
+    var cantidadvaca = aleatorio(1 , 20)
+    for(var v=0; v<cantidadvaca; v++)
     {
         if (vaca.cargaOK)
         {
             var x = aleatorio(0 , 420);
             var y = aleatorio(0 , 420);
             papel.drawImage(vaca.imagen, x, y);
+        }
+    }
+
+    var cantidadcerdo = aleatorio(1 , 20)
+    for(var c=0; c<cantidadcerdo; c++)
+    {
+        if (cerdo.cargaOK)
+        {
+            var x = aleatorio(0 , 420);
+            var y = aleatorio(0 , 420);
+            papel.drawImage(cerdo.imagen, x, y);
+        }
+    }
+
+    var cantidadpollo = aleatorio(1 , 20)
+    for(var p=0; p<cantidadpollo; p++)
+    {
+        if (pollo.cargaOK)
+        {
+            var x = aleatorio(0 , 420);
+            var y = aleatorio(0 , 420);
+            papel.drawImage(pollo.imagen, x, y);
         }
     }
 
