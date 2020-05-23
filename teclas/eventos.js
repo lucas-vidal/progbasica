@@ -1,49 +1,46 @@
-var teclas = {
-    UP: 38, 
-    DOWN: 40,
-    LEFT: 37,
-    RIGTH: 39
-};
-
-
+var teclas = {UP: 38,  DOWN: 40, LEFT: 37, RIGTH: 39};
 document.addEventListener("keydown", dibujarTeclado);
+document.addEventListener("mousemove", dibujarMouseMove);
 var cuadrito = document.getElementById("area_de_dibujo");
 var papel = cuadrito.getContext("2d");
-var x = 150;
-var y = 150;
-
-dibujarLinea("red", 149, 149, 151, 151, papel);
+var x = 150; y = 150; color = "black"; movimiento = 1;
 
 function dibujarLinea (color, xinicial, yinicial, xfinal, yfinal, lienzo)
 {
     lienzo.beginPath();
     lienzo.strokeStyle = color;
-    lienzo.lineWidth = 3;
+    lienzo.lineWidth = 1;
     lienzo.moveTo(xinicial, yinicial);
     lienzo.lineTo(xfinal, yfinal);
     lienzo.stroke();
     lienzo.closePath;
 }
-
-
-function dibujarTeclado(evento)
+function dibujarTeclado(eventoTeclado)
 {
-    var colorcito = "pup";
-    var movimiento = 2;
-    switch(evento.keyCode)
-    {
-        case teclas.UP:
+    console.log(eventoTeclado)
+        if (eventoTeclado.keyCode == teclas.UP)
+        {
             y = y - movimiento; 
-        break;  
-        case teclas.DOWN:
+        }    
+        if (eventoTeclado.keyCode == teclas.DOWN)
+        {
             y = y + movimiento;
-        break;
-        case teclas.LEFT:
+        }
+        if (eventoTeclado.keyCode == teclas.LEFT)
+        {
             x = x - movimiento;
-        break;
-        case teclas.RIGTH:
+        }
+        if (eventoTeclado.keyCode == teclas.RIGTH)
+        {
             x = x + movimiento;
-        break;    
+        }  
+        dibujarLinea(color, x, y, x + movimiento, y + movimiento, papel);
+}
+function dibujarMouseMove(eventoMouse)
+{
+    if (eventoMouse.buttons == 1){
+    x =  eventoMouse.layerX;
+    y =  eventoMouse.layerY;
+    dibujarLinea(color, x, y, x + movimiento, y + movimiento, papel);
     }
-    dibujarLinea(colorcito, x - movimiento, y - movimiento, x , y, papel);
 }
