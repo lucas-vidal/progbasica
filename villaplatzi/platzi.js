@@ -64,12 +64,18 @@ function dibujar()
     {
         papel.drawImage(fondo.imagen, 0, 0);
     }
-    if (vaca.cargaOK)
+    
+    var cantidad = aleatorio(10 , 20)
+    for(var v=0; v<cantidad; v++)
     {
-        var x = aleatorio(0 , 420);
-        var y = aleatorio(0 , 420);
-        papel.drawImage(vaca.imagen, x, y);
+        if (vaca.cargaOK)
+        {
+            var x = aleatorio(0 , 420);
+            var y = aleatorio(0 , 420);
+            papel.drawImage(vaca.imagen, x, y);
+        }
     }
+
 
 }
 
