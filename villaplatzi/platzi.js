@@ -76,17 +76,6 @@ function dibujar()
         }
     }
 
-    var cantidadcerdo = aleatorio(1 , 20)
-    for(var c=0; c<cantidadcerdo; c++)
-    {
-        if (cerdo.cargaOK)
-        {
-            var x = aleatorio(0 , 420);
-            var y = aleatorio(0 , 420);
-            papel.drawImage(cerdo.imagen, x, y);
-        }
-    }
-
     var cantidadpollo = aleatorio(1 , 20)
     for(var p=0; p<cantidadpollo; p++)
     {
@@ -97,15 +86,50 @@ function dibujar()
             papel.drawImage(pollo.imagen, x, y);
         }
     }
-
-
+    if (cerdo.cargaOK)
+    {
+        papel.drawImage(cerdo.imagen, xc, yc);
+    }
 }
 
- 
+
 
 function aleatorio(min, max)
 {
     var resultado;
     resultado = Math.floor(Math.random() * (max - min + 1)) + min;
-return resultado;
+    return resultado;
 }
+
+var teclas = {UP: 38,  DOWN: 40, LEFT: 37, RIGTH: 39};
+document.addEventListener("keydown", dibujarTeclado);
+papel.drawImage(cerdo.imagen, xc, yc);
+var movimiento = 2;
+var xc = 170;
+var yc = 170;
+
+function dibujarTeclado(eventoTeclado)
+{
+        if (eventoTeclado.keyCode == teclas.UP)
+        {
+            yc = yc - movimiento; 
+            dibujar();
+        }    
+        if (eventoTeclado.keyCode == teclas.DOWN)
+        {
+            yc = yc + movimiento;
+            dibujar();
+        }
+        if (eventoTeclado.keyCode == teclas.LEFT)
+        {
+            xc = xc - movimiento;
+            dibujar();
+        }
+        if (eventoTeclado.keyCode == teclas.RIGTH)
+        {
+            xc = xc + movimiento;
+            dibujar();
+        }
+}
+
+
